@@ -1,0 +1,565 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
+
+@media print {
+    body { margin: 0; }
+    .page { page-break-after: always; margin: 0; }
+    .page:last-child { page-break-after: avoid; }
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.7;
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+}
+
+.page {
+    position: relative;
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: white;
+    page-break-after: always;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.page:last-child {
+    page-break-after: avoid;
+}
+
+/* WATERMARK */
+.page::before {
+    content: "aNQUEST";
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-size: 140px;
+    font-weight: 800;
+    font-family: 'Playfair Display', serif;
+    color: rgba(102, 126, 234, 0.025);
+    letter-spacing: 0.05em;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    padding: 25mm 20mm;
+}
+
+/* TYPOGRAPHY */
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #0a3d62;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    line-height: 1.3;
+}
+
+h2:first-child {
+    margin-top: 0;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 28px;
+    margin-bottom: 12px;
+    color: #4f6ae0;
+}
+
+p {
+    font-size: 15px;
+    color: #4a4a4a;
+    margin: 12px 0;
+    line-height: 1.8;
+}
+
+/* COVER PAGE */
+.cover {
+    background: linear-gradient(135deg, #e1e4f1 0%, #1262ca 100%);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 297mm;
+}
+
+.cover .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 297mm;
+    padding: 6mm 20mm 30mm;
+}
+
+.cover-header {
+    margin-bottom: 80px;
+}
+
+.cover-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.cover-tagline {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+.cover-logo-first{
+    /* color:linear-gradient(135deg, #0c66bb 0%, #1262ca 100%); */
+    background: linear-gradient(135deg, #1a91e0 0%, #a3bee2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.cover-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 40px; /* spacing before client box */
+}
+.cover-client {
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+
+.cover h1 {
+    font-size: 64px;
+    color: white;
+    margin-bottom: 25px;
+    line-height: 1.1;
+}
+
+.cover .sub {
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 300;
+    line-height: 1.6;
+    /* margin-bottom: 60px; */
+}
+
+.cover-client {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 40px;
+}
+
+.cover-client-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.cover-client h3 {
+    font-size: 32px;
+    color: white;
+    margin: 0;
+    font-weight: 600;
+}
+
+.cover-client p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 5px 0 0 0;
+}
+
+.cover-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 25px;
+}
+
+.cover-footer p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 4px 0;
+}
+
+.cover-footer strong {
+    color: white;
+    font-weight: 600;
+}
+
+/* PAGE HEADER */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #667eea;
+}
+
+.page-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #667eea;
+    letter-spacing: 2px;
+}
+
+.page-number {
+    font-size: 13px;
+    color: #999;
+    font-weight: 500;
+}
+
+/* HIGHLIGHT BOX */
+.box {
+    /* background: linear-gradient(135deg, #f6f8ff 0%, #faf5ff 100%); */
+    border-left: 5px solid #667eea;
+    padding: 0px 10px;
+    gap:10px;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.09);
+}
+
+.box p {
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.box-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: #667eea;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    font-size: 14px;
+    margin-right: 12px;
+    font-weight: 600;
+}
+
+/* LISTS */
+ul {
+    padding-left: 0;
+    list-style: none;
+    margin: 20px 0;
+}
+
+ul li {
+    font-size: 15px;
+    color: #4a4a4a;
+    margin-bottom: 12px;
+    padding-left: 30px;
+    position: relative;
+    line-height: 1.7;
+}
+
+ul li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+/* PACKAGES */
+.packages {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 35px;
+    margin-bottom: 30px;
+}
+
+.package {
+    background: white;
+    border: 2px solid #e5e5e5;
+    padding: 30px 5px;
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.package:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.package h3 {
+    text-align: center;
+    font-size: 26px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: #1a1a1a;
+}
+
+.package-price {
+    text-align: center;
+    font-size: 38px;
+    font-weight: 800;
+    color: #bbc4eb;
+    margin: 15px 0 5px;
+}
+
+.package-period {
+    text-align: center;
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
+.package ul {
+    margin: 20px 0 0 0;
+}
+
+.package ul li {
+    font-size: 14px;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.package ul li:before {
+    font-size: 16px;
+}
+
+.silver { 
+    border-top: 5px solid #9e9e9e;
+}
+
+.gold { 
+    border-top: 5px solid #f1c40f;
+    border-color: #667eea;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.15);
+}
+
+.gold h3 {
+    color: #667eea;
+}
+
+.gold .badge {
+    display: block;
+}
+
+.diamond { 
+    border-top: 5px solid #00bcd4;
+}
+
+.badge {
+    display: none;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #798de6 0%, #134bc5 100%);
+    color: white;
+    padding: 5px 18px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* TWO COLUMN LAYOUT */
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.column-box {
+    background: #fafafa;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+}
+
+.column-box h3 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+/* VALUE PROPOSITION */
+.value-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 30px 10px;
+}
+
+.value-item {
+    /* background: linear-gradient(135deg, #f8f9ff 0%, #fafbff 100%); */
+    padding: 22px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.value-item h4 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 10px 0;
+}
+
+.value-item p {
+    font-size: 14px;
+    margin: 0;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.footer p {
+    margin: 5px 0;
+    font-size: 12px;
+}
+
+/* CONTACT SECTION */
+.contact-box {
+    background: linear-gradient(135deg, #e1e4f1 0%, #1262ca 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 12px;
+    margin-top: 35px;
+}
+
+.contact-box h3 {
+    color: white;
+    font-size: 28px;
+    margin-top: 0;
+}
+
+.contact-box p {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 15px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 25px;
+}
+
+.contact-item h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.contact-item p {
+    font-size: 14px;
+    margin: 3px 0;
+}
+
+/* INTRO TEXT */
+.intro-text {
+    font-size: 17px;
+    color: #2a2a2a;
+    line-height: 1.9;
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+/* UTILITY */
+.text-center {
+    text-align: center;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+strong {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* IMAGE WATERMARK – ALL PAGES */
+.page::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    background-image: url("logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    opacity: 0.2; /* watermark strength */
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* DARK WATERMARK FOR NORMAL PAGES */
+.page:not(.cover)::after {
+    color: rgba(102, 126, 234, 0.035);
+}
+@media print {
+    .page::after {
+        display: block !important;
+    }
+}
+
+
+.package.gold {
+    transform: scale(1.05);
+    background: linear-gradient(180deg, #ffffff 0%, #f5f8ff 100%);
+    border: 2px solid #667eea;
+}
+
+.package.gold:hover {
+    transform: scale(1.06);
+}
