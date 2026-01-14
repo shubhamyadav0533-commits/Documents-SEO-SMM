@@ -11,9 +11,150 @@
 }
 
 @media print {
-    body { margin: 0; }
-    .page { page-break-after: always; margin: 0; }
-    .page:last-child { page-break-after: avoid; }
+    * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .page {
+        height: 297mm !important;
+        min-height: 297mm !important;
+        max-height: 297mm !important;
+        width: 210mm !important;
+        page-break-after: always;
+        page-break-inside: avoid;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        overflow: hidden !important;
+    }
+
+    .page.cover {
+        height: 297mm !important;
+        min-height: 297mm !important;
+    }
+
+    .page.cover .content {
+        padding: 6mm 20mm 30mm !important;
+    }
+
+    .page:last-child {
+        page-break-after: avoid;
+    }
+
+    .content {
+        padding: 15mm 15mm 15mm !important;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    /* Reduce spacing for print */
+    h2 {
+        margin-top: 20px !important;
+        margin-bottom: 12px !important;
+        font-size: 28px !important;
+    }
+
+    h3 {
+        margin-top: 18px !important;
+        margin-bottom: 8px !important;
+        font-size: 20px !important;
+    }
+
+    p {
+        margin: 8px 0 !important;
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+    }
+
+    .page-header {
+        margin-bottom: 25px !important;
+        padding-bottom: 10px !important;
+    }
+
+    .value-grid {
+        margin: 20px 0 !important;
+        gap: 15px !important;
+    }
+
+    .value-item {
+        padding: 15px !important;
+    }
+
+    .box {
+        margin: 15px 0 !important;
+        padding: 12px 10px !important;
+    }
+
+    .two-columns {
+        gap: 15px !important;
+        margin: 20px 0 !important;
+    }
+
+    .column-box {
+        padding: 18px !important;
+    }
+
+    ul {
+        margin: 15px 0 !important;
+    }
+
+    ul li {
+        margin-bottom: 8px !important;
+        font-size: 13px !important;
+    }
+
+    .mt-40 {
+        margin-top: 25px !important;
+    }
+
+    .intro-text {
+        font-size: 15px !important;
+        margin-bottom: 15px !important;
+        line-height: 1.7 !important;
+    }
+
+    .contact-box {
+        padding: 25px !important;
+        margin-top: 20px !important;
+    }
+
+    .footer {
+        margin-top: 30px !important;
+        padding-top: 15px !important;
+    }
+
+    .tab-btn {
+        display: none !important;
+    }
+
+    .plan-box {
+        display: block !important;
+        page-break-inside: avoid;
+        margin-bottom: 15px !important;
+    }
+
+    .plan-box .overflow-y-auto,
+    .plan-box [class*="overflow-y-auto"],
+    .plan-box [class*="max-h-"] {
+        max-height: none !important;
+        overflow: visible !important;
+        height: auto !important;
+    }
+
+    #silver, #gold, #diamond {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .page::before {
+        display: none !important;
+    }
 }
 
 body {
@@ -39,7 +180,6 @@ body {
     page-break-after: avoid;
 }
 
-/* WATERMARK */
 .page::before {
     content: "aNQUEST";
     position: absolute;
@@ -61,7 +201,6 @@ body {
     padding: 25mm 20mm;
 }
 
-/* TYPOGRAPHY */
 h1 {
     font-family: 'Playfair Display', serif;
     font-size: 48px;
@@ -101,7 +240,6 @@ p {
     line-height: 1.8;
 }
 
-/* COVER PAGE */
 .cover {
     background: linear-gradient(135deg, #e1e4f1 0%, #1262ca 100%);
     padding: 0;
@@ -138,18 +276,20 @@ p {
     font-weight: 300;
     letter-spacing: 1px;
 }
+
 .cover-logo-first{
-    /* color:linear-gradient(135deg, #0c66bb 0%, #1262ca 100%); */
     background: linear-gradient(135deg, #1a91e0 0%, #a3bee2 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 .cover-title {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 40px; /* spacing before client box */
+    margin-bottom: 40px;
 }
+
 .cover-client {
     margin-top: 0;
     margin-bottom: 50px;
@@ -168,7 +308,6 @@ p {
     color: rgba(255, 255, 255, 0.95);
     font-weight: 300;
     line-height: 1.6;
-    /* margin-bottom: 60px; */
 }
 
 .cover-client {
@@ -217,7 +356,6 @@ p {
     font-weight: 600;
 }
 
-/* PAGE HEADER */
 .page-header {
     display: flex;
     justify-content: space-between;
@@ -241,9 +379,7 @@ p {
     font-weight: 500;
 }
 
-/* HIGHLIGHT BOX */
 .box {
-    /* background: linear-gradient(135deg, #f6f8ff 0%, #faf5ff 100%); */
     border-left: 5px solid #667eea;
     padding: 0px 10px;
     gap:10px;
@@ -270,7 +406,6 @@ p {
     font-weight: 600;
 }
 
-/* LISTS */
 ul {
     padding-left: 0;
     list-style: none;
@@ -295,7 +430,6 @@ ul li:before {
     font-size: 18px;
 }
 
-/* PACKAGES */
 .packages {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -343,7 +477,6 @@ ul li:before {
     letter-spacing: 1px;
     text-transform: uppercase;
 }
-
 
 .package ul {
     margin: 20px 0 0 0;
@@ -398,7 +531,6 @@ ul li:before {
     text-transform: uppercase;
 }
 
-/* TWO COLUMN LAYOUT */
 .two-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -418,7 +550,6 @@ ul li:before {
     font-size: 20px;
 }
 
-/* VALUE PROPOSITION */
 .value-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -427,7 +558,6 @@ ul li:before {
 }
 
 .value-item {
-    /* background: linear-gradient(135deg, #f8f9ff 0%, #fafbff 100%); */
     padding: 22px;
     border-radius: 8px;
     border-left: 4px solid #667eea;
@@ -462,7 +592,6 @@ ul li:before {
     font-size: 12px;
 }
 
-/* CONTACT SECTION */
 .contact-box {
     background: linear-gradient(135deg, #e1e4f1 0%, #1262ca 100%);
     color: white;
@@ -501,7 +630,6 @@ ul li:before {
     margin: 3px 0;
 }
 
-/* INTRO TEXT */
 .intro-text {
     font-size: 17px;
     color: #2a2a2a;
@@ -510,7 +638,6 @@ ul li:before {
     font-weight: 400;
 }
 
-/* UTILITY */
 .text-center {
     text-align: center;
 }
@@ -528,7 +655,6 @@ strong {
     color: #1a1a1a;
 }
 
-/* IMAGE WATERMARK – ALL PAGES */
 .page::after {
     content: "";
     position: absolute;
@@ -538,15 +664,15 @@ strong {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
-    opacity: 0.2; /* watermark strength */
+    opacity: 0.2;
     z-index: 0;
     pointer-events: none;
 }
 
-/* DARK WATERMARK FOR NORMAL PAGES */
 .page:not(.cover)::after {
     color: rgba(102, 126, 234, 0.035);
 }
+
 @media print {
     .page::after {
         display: block !important;
