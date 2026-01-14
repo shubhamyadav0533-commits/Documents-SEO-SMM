@@ -277,11 +277,14 @@ p {
     letter-spacing: 1px;
 }
 
-.cover-logo-first{
+.cover-logo-first {
     background: linear-gradient(135deg, #1a91e0 0%, #a3bee2 100%);
-    -webkit-background-clip: text;
+    background-clip: text;              
+    -webkit-background-clip: text;      
+    color: transparent;                 
     -webkit-text-fill-color: transparent;
 }
+
 
 .cover-title {
     display: flex;
